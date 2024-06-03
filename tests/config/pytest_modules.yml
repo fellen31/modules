@@ -1689,9 +1689,6 @@ snpsift/split:
 snpsites:
   - modules/nf-core/snpsites/**
   - tests/modules/nf-core/snpsites/**
-somalier/ancestry:
-  - modules/nf-core/somalier/ancestry/**
-  - tests/modules/nf-core/somalier/ancestry/**
 somalier/extract:
   - modules/nf-core/somalier/extract/**
   - tests/modules/nf-core/somalier/extract/**

@@ -1,0 +1,2 @@
+somalier/ancestry:
+  - "modules/nf-core/somalier/ancestry/**"

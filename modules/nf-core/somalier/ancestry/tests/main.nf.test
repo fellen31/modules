@@ -1,0 +1,54 @@
+nextflow_process {
+
+    name "Test Process SOMALIER_ANCESTRY"
+    script "../main.nf"
+    process "SOMALIER_ANCESTRY"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "somalier"
+    tag "somalier/ancestry"
+    tag "untar"
+
+    setup {
+        run("UNTAR") {
+            script "../../../untar/main.nf"
+            process {
+                """
+                input[0] = [
+                    [ id:'1kg_test' ], // meta map
+                    file("https://zenodo.org/record/3479773/files/1kg.somalier.tar.gz", checkIfExists: true)
+                ]
+                """
+            }
+        }
+    }
+
+    test("somalier ancestry") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id: 'test' ], // meta map
+                    file(params.modules_testdata_base_path + 'delete_me/somalier/whole_genome.somalier', checkIfExists: true)
+                ]
+                input[1] = Channel.of([
+                    [ id: 'test_files' ],
+                    file("https://github.com/brentp/somalier/raw/73db124d3fe9febe3a53787707554f863595b48f/scripts/ancestry-labels-1kg.tsv", checkIfExists: true),
+                    []
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+}
