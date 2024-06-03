@@ -13,6 +13,8 @@ nextflow_process {
     setup {
         run("UNTAR") {
             script "../../../untar/main.nf"
+            config "./nextflow.untar.config"
+
             process {
                 """
                 input[0] = [
@@ -34,10 +36,9 @@ nextflow_process {
                     file(params.modules_testdata_base_path + 'delete_me/somalier/whole_genome.somalier', checkIfExists: true)
                 ]
                 input[1] = Channel.of([
-                    [ id: 'test_files' ],
-                    file("https://github.com/brentp/somalier/raw/73db124d3fe9febe3a53787707554f863595b48f/scripts/ancestry-labels-1kg.tsv", checkIfExists: true),
-                    []
-                ])
+                    [ id: '1kg_test' ],
+                    file(params.modules_testdata_base_path + 'delete_me/somalier/ancestry-labels-1kg.tsv", checkIfExists: true)
+                ]).join(UNTAR.out.untar)
                 """
             }
         }

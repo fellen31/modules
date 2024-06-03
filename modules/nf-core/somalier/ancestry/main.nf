@@ -37,4 +37,17 @@ process SOMALIER_ANCESTRY {
     END_VERSIONS
     """
 
+    stub:
+    def prefix = task.ext.prefix ?: "${meta.id}"
+
+    """
+    touch ${prefix}-ancestry.tsv
+    touch ${prefix}-ancestry.html
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        somalier: \$(echo \$(somalier 2>&1) | sed 's/^.*somalier version: //; s/Commands:.*\$//')
+    END_VERSIONS
+    """
+
 }
