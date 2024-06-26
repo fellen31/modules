@@ -1,0 +1,37 @@
+{
+    "homo_sapiens - vcf - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,07b334d448bc4bcd9620bb4e8ac11c42"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,ef02d93c7627a5a20a25326b5d7ebffc"
+                ],
+                "tsv": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,07b334d448bc4bcd9620bb4e8ac11c42"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,ef02d93c7627a5a20a25326b5d7ebffc"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "24.04.2"
+        },
+        "timestamp": "2024-06-26T11:47:05.583114003"
+    }
+}

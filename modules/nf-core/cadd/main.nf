@@ -3,12 +3,12 @@ process CADD {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container 'docker.io/biocontainers/cadd-scripts-with-envs:1.6.post1_cv1'
+    container 'docker.io/biocontainers/cadd-scripts:1.7--hdfd78af_0'
 
     containerOptions {
         (workflow.containerEngine == 'singularity') ?
-            "-B ${annotation_dir}:/opt/CADD-scripts-1.6.post1/data/annotations" :
-            "-v ${annotation_dir}:/opt/CADD-scripts-1.6.post1/data/annotations"
+            "-B ${annotation_dir}:/opt/CADD-scripts-1.7/data/annotations" :
+            "-v ${annotation_dir}:/opt/CADD-scripts-1.7/data/annotations"
         }
 
     input:
@@ -25,7 +25,7 @@ process CADD {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def VERSION = "1.6.post1" // WARN: Version information not provided by tool on CLI. Please update version string below when bumping container versions.
+    def VERSION = "1.7" // WARN: Version information not provided by tool on CLI. Please update version string below when bumping container versions.
     """
     cadd.sh \\
         -o ${prefix}.tsv.gz \\
@@ -41,9 +41,9 @@ process CADD {
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def VERSION = "1.6.post1" // WARN: Version information not provided by tool on CLI. Please update version string below when bumping container versions.
+    def VERSION = "1.7" // WARN: Version information not provided by tool on CLI. Please update version string below when bumping container versions.
     """
-    touch ${prefix}.tsv.gz
+    echo echo "" | gzip > ${prefix}.tsv.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
