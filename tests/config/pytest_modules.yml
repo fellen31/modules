@@ -43,9 +43,18 @@ bbmap/align:
 bcftools/convert:
   - modules/nf-core/bcftools/convert/**
   - tests/modules/nf-core/bcftools/convert/**
-bcftools/merge:
-  - modules/nf-core/bcftools/merge/**
-  - tests/modules/nf-core/bcftools/merge/**
+bcftools/roh:
+  - modules/nf-core/bcftools/roh/**
+  - tests/modules/nf-core/bcftools/roh/**
+bcftools/split:
+  - modules/nf-core/bcftools/split/**
+  - tests/modules/nf-core/bcftools/split/**
+beagle5/beagle:
+  - modules/nf-core/beagle5/beagle/**
+  - tests/modules/nf-core/beagle5/beagle/**
+bedtools/groupby:
+  - modules/nf-core/bedtools/groupby/**
+  - tests/modules/nf-core/bedtools/groupby/**
 bedtools/intersect:
   - modules/nf-core/bedtools/intersect/**
   - tests/modules/nf-core/bedtools/intersect/**
