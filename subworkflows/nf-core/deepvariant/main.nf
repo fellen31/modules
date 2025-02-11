@@ -28,6 +28,9 @@ workflow DEEPVARIANT {
         DEEPVARIANT_MAKEEXAMPLES.out.gvcf,
         failOnMismatch: true
     ).join(
+        DEEPVARIANT_MAKEEXAMPLES.out.small_model_calls,
+        failOnMismatch: true
+    ).join(
         ch_intervals,
         failOnMismatch: true
     )
